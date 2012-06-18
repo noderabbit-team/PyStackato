@@ -1,0 +1,44 @@
+# intellij/pycharm/etc
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# kde
+.directory
+
+# OSX
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# SublimeText project files
+/*.sublime-project
+*.sublime-workspace
+
+# TextMate
+*.tmproj
+*.tmproject
+tmtags
+
+# vim
+.*.sw[a-z]
+*.un~
+Session.vim
+
+# python
+*.py[cod]
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+sdist
+develop-eggs
+.installed.cfg
+pip-log.txt
+.coverage
+.tox
+nosetests.xml

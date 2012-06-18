@@ -1,0 +1,80 @@
+              stackato_license GET    /stackato/license(.:format)                               {:controller=>"stackato", :action=>"license"}
+                stackato_setup POST   /stackato/license(.:format)                               {:controller=>"stackato", :action=>"setup"}
+              stackato_upgrade PUT    /stackato/license(.:format)                               {:controller=>"stackato", :action=>"upgrade"}
+               stackato_report GET    /stackato/report(.:format)                                {:controller=>"stackato", :action=>"report"}
+                 stackato_info GET    /stackato/info(.:format)                                  {:controller=>"stackato", :action=>"info"}
+           stackato_components GET    /stackato/components(.:format)                            {:controller=>"stackato", :action=>"components"}
+    stackato_components_update PUT    /stackato/components/:component(.:format)                 {:controller=>"stackato", :action=>"components_update"}
+           stackato_app_create PUT    /stackato/apps(.:format)                                  {:controller=>"stackato", :action=>"app_create"}
+           stackato_app_stores GET    /stackato/app_stores(.:format)                            {:controller=>"stackato", :action=>"app_stores"}
+               stackato_events GET    /stackato/events(.:format)                                {:controller=>"stackato", :action=>"events"}
+               stackato_config GET    /stackato/config(.:format)                                {:controller=>"stackato", :action=>"configuration"}
+        stackato_config_update PUT    /stackato/config(.:format)                                {:controller=>"stackato", :action=>"configuration_update"}
+             stackato_collectd GET    /stackato/collectd(.:format)                              {:controller=>"stackato", :action=>"collectd"}
+                    cloud_info GET    /info(.:format)                                           {:action=>"info", :controller=>"default"}
+            cloud_service_info GET    /info/services(.:format)                                  {:controller=>"default", :action=>"service_info"}
+            cloud_runtime_info GET    /info/runtimes(.:format)                                  {:controller=>"default", :action=>"runtime_info"}
+                    list_users GET    /users(.:format)                                          {:action=>"list", :controller=>"users"}
+                   create_user POST   /users(.:format)                                          {:action=>"create", :controller=>"users"}
+                     user_info GET    /users/*email(.:format)                                   {:controller=>"users", :action=>"info"}
+                   delete_user DELETE /users/*email(.:format)                                   {:controller=>"users", :action=>"delete"}
+                   update_user PUT    /users/*email(.:format)                                   {:controller=>"users", :action=>"update"}
+                  create_token POST   /users/*email/tokens(.:format)                            {:controller=>"user_tokens", :action=>"create"}
+                    app_create POST   /apps(.:format)                                           {:action=>"create", :controller=>"apps"}
+                     list_apps GET    /apps(.:format)                                           {:action=>"list", :controller=>"apps"}
+                       app_get GET    /apps/:name(.:format)                                     {:controller=>"apps", :action=>"get"}
+                    app_update PUT    /apps/:name(.:format)                                     {:controller=>"apps", :action=>"update"}
+                    app_delete DELETE /apps/:name(.:format)                                     {:controller=>"apps", :action=>"delete"}
+                    app_upload PUT    /apps/:name/application(.:format)                         {:controller=>"apps", :action=>"upload"}
+                   app_crashes GET    /apps/:name/crashes(.:format)                             {:controller=>"apps", :action=>"crashes"}
+                resource_match POST   /resources(.:format)                                      {:action=>"match", :controller=>"resource_pool"}
+                  app_download GET    /apps/:name/application(.:format)                         {:controller=>"apps", :action=>"download"}
+           app_download_staged GET    /staged_droplets/:id/:hash(.:format)                      {:controller=>"apps", :action=>"download_staged"}
+                 app_instances GET    /apps/:name/instances(.:format)                           {:controller=>"apps", :action=>"instances"}
+                     app_stats GET    /apps/:name/stats(.:format)                               {:controller=>"apps", :action=>"stats"}
+                               GET    /apps/:name/update(.:format)                              {:controller=>"apps", :action=>"check_update"}
+                               PUT    /apps/:name/update(.:format)                              {:controller=>"apps", :action=>"start_update"}
+                               GET    /apps/:name/staging_info(.:format)                        {:controller=>"apps", :action=>"staging_info"}
+                     bulk_apps GET    /bulk/apps(.:format)                                      {:controller=>"bulk", :action=>"apps"}
+                    bulk_users GET    /bulk/users(.:format)                                     {:controller=>"bulk", :action=>"users"}
+                upload_droplet POST   /staging/droplet/:id/:upload_id(.:format)                 {:controller=>"staging", :action=>"upload_droplet"}
+         download_unstaged_app GET    /staging/app/:id(.:format)                                {:controller=>"staging", :action=>"download_app"}
+                service_create POST   /services/v1/offerings(.:format)                          {:controller=>"services", :action=>"create"}
+                service_delete DELETE /services/v1/offerings/:label(.:format)                   {:label=>/[^\/]+/, :controller=>"services", :action=>"delete"}
+          service_list_handles GET    /services/v1/offerings/:label/handles(.:format)           {:label=>/[^\/]+/, :controller=>"services", :action=>"list_handles"}
+         service_update_handle POST   /services/v1/offerings/:label/handles/:id(.:format)       {:label=>/[^\/]+/, :controller=>"services", :action=>"update_handle"}
+             service_provision POST   /services/v1/configurations(.:format)                     {:controller=>"services", :action=>"provision"}
+           service_unprovision DELETE /services/v1/configurations/:id(.:format)                 {:id=>/[^\/]+/, :controller=>"services", :action=>"unprovision"}
+                  service_bind POST   /services/v1/bindings(.:format)                           {:controller=>"services", :action=>"bind"}
+         service_bind_external POST   /services/v1/bindings/external(.:format)                  {:controller=>"services", :action=>"bind_external"}
+                service_unbind DELETE /services/v1/bindings/:binding_token(.:format)            {:binding_token=>/[^\/]+/, :controller=>"services", :action=>"unbind"}
+          binding_token_create POST   /services/v1/binding_tokens(.:format)                     {:controller=>"binding_tokens", :action=>"create"}
+             binding_token_get GET    /services/v1/binding_tokens/:binding_token(.:format)      {:binding_token=>/[^\/]+/, :controller=>"binding_tokens", :action=>"get"}
+          binding_token_delete DELETE /services/v1/binding_tokens/:binding_token(.:format)      {:binding_token=>/[^\/]+/, :controller=>"binding_tokens", :action=>"delete"}
+service_list_brokered_services GET    /brokered_services/poc/offerings(.:format)                {:controller=>"services", :action=>"list_brokered_services"}
+       service_create_snapshot POST   /services/v1/configurations/:id/snapshots(.:format)       {:id=>/[^\/]+/, :controller=>"services", :action=>"create_snapshot"}
+        service_enum_snapshots GET    /services/v1/configurations/:id/snapshots(.:format)       {:id=>/[^\/]+/, :controller=>"services", :action=>"enum_snapshots"}
+      service_snapshot_details GET    /services/v1/configurations/:id/snapshots/:sid(.:format)  {:id=>/[^\/]+/, :sid=>/[^\/]+/, :controller=>"services", :action=>"snapshot_details"}
+     service_rollback_snapshot PUT    /services/v1/configurations/:id/snapshots/:sid(.:format)  {:id=>/[^\/]+/, :sid=>/[^\/]+/, :controller=>"services", :action=>"rollback_snapshot"}
+        service_serialized_url GET    /services/v1/configurations/:id/serialized/url(.:format)  {:id=>/[^\/]+/, :controller=>"services", :action=>"serialized_url"}
+       service_import_from_url PUT    /services/v1/configurations/:id/serialized/url(.:format)  {:id=>/[^\/]+/, :controller=>"services", :action=>"import_from_url"}
+      service_import_from_data PUT    /services/v1/configurations/:id/serialized/data(.:format) {:id=>/[^\/]+/, :controller=>"services", :action=>"import_from_data"}
+              service_job_info GET    /services/v1/configurations/:id/jobs/:job_id(.:format)    {:id=>/[^\/]+/, :job_id=>/[^\/]+/, :controller=>"services", :action=>"job_info"}
+           legacy_service_list GET    /services(.:format)                                       {:action=>"list", :controller=>"legacy_services"}
+      legacy_service_provision POST   /services(.:format)                                       {:action=>"provision", :controller=>"legacy_services"}
+    legacy_service_unprovision DELETE /services/:alias(.:format)                                {:alias=>/[^\/]+/, :controller=>"legacy_services", :action=>"unprovision"}
+            legacy_service_get GET    /services/:alias(.:format)                                {:alias=>/[^\/]+/, :controller=>"legacy_services", :action=>"get"}
+                               POST   /services/:label/tokens(.:format)                         {:controller=>"default", :action=>"not_implemented"}
+                               DELETE /services/:label/tokens(.:format)                         {:controller=>"default", :action=>"not_implemented"}
+                               GET    /apps/:name/instances/:instance_id/files(.:format)        {:controller=>"apps", :action=>"files"}
+                               GET    /apps/:name/instances/:instance_id/files/*path(.:format)  {:controller=>"apps", :action=>"files"}
+                  create_group POST   /groups(.:format)                                         {:action=>"create", :controller=>"groups"}
+                  delete_group DELETE /groups/:group(.:format)                                  {:group=>/[^\/]+/, :controller=>"groups", :action=>"delete"}
+                   list_groups GET    /groups(.:format)                                         {:action=>"list", :controller=>"groups"}
+             add_user_to_group POST   /groups/:group/users(.:format)                            {:group=>/[^\/]+/, :controller=>"groups", :action=>"add_user"}
+        remove_user_from_group DELETE /groups/:group/users/:user(.:format)                      {:group=>/[^\/]+/, :user=>/[^\/]+/, :controller=>"groups", :action=>"remove_user"}
+           list_users_in_group GET    /groups/:group/users(.:format)                            {:group=>/[^\/]+/, :controller=>"groups", :action=>"list_users"}
+              get_group_limits GET    /groups/:group/limits(.:format)                           {:group=>/[^\/]+/, :controller=>"group_limits", :action=>"get"}
+              set_group_limits POST   /groups/:group/limits(.:format)                           {:group=>/[^\/]+/, :controller=>"group_limits", :action=>"update"}
+                          root        /(.:format)                                               {:controller=>"default", :action=>"index"}
+                                      /*a(.:format)                                             {:controller=>"default", :action=>"route_not_found"}
