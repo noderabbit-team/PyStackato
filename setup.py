@@ -1,7 +1,7 @@
 from setuptools import setup
 import stackato
 
-requirements = ['setuptools', 'requests>=0.10.1']
+requirements = ['setuptools', 'requests>=0.11.2']
 
 setup(
     name='PyStackato',
