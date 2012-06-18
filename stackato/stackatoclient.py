@@ -18,6 +18,30 @@ STACKATO_PATH       = '/stackato'
 
 
 class StackatoClient(RestClient):
+    @property
+    def auth_token(self):
+        return self.config.get('auth_token', None)
+
+    @auth_token.setter
+    def auth_token(self, token):
+        if token:
+            self.login_using_token(token)
+            self._verify_cloud_info()
+        else:
+            del self.config['auth_token']
+
+    @property
+    def user(self):
+        return self.config.get('user', None)
+
+    @user.setter
+    def user(self, email):
+        if email:
+            self.login(email)
+            self._verify_cloud_info()
+        else:
+            del self.config['user']
+
     def request(self, method, path, **kwargs):
         headers = {
             'User-Agent': 'PyStackato/%s' % __version__,
