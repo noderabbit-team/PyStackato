@@ -161,7 +161,7 @@ class StackatoClient(RestClient):
     def create_user(self, email, password, **kwargs):
         data = {'email': email, 'password': password}
         response = self.post(USERS_PATH, data, **kwargs)
-        return response
+        return response.json
 
     def update_user(self, email, password, **kwargs):
         self._require_login()
@@ -171,7 +171,7 @@ class StackatoClient(RestClient):
         user_info['password'] = password
         path = USER_PATH % {'email':email}
         response = self.put(path, user_info, **kwargs)
-        return response
+        return response.json
 
     def delete_user(self, email, **kwargs):
         self._require_login()
@@ -180,4 +180,4 @@ class StackatoClient(RestClient):
             raise Exception()
         path = USER_PATH % {'email':email}
         response = self.delete(path, **kwargs)
-        return response
+        return response.json
