@@ -9,4 +9,5 @@ __version__     = '0.0.1dev'
 __license__     = 'BSD'
 __copyright__   = 'Copyright 2012 NodeRabbit, Inc'
 
-from .stackatoclient import StackatoClient
+#from .stackatoclient import StackatoClient
+
