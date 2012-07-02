@@ -160,7 +160,8 @@ class StackatoClient(RestClient):
 
     def create_user(self, email, password, **kwargs):
         data = {'email': email, 'password': password}
-        response = self.post(USERS_PATH, data, **kwargs)
+        kwargs['data'] = data
+        response = self.post(USERS_PATH, **kwargs)
         return response.json
 
     def update_user(self, email, password, **kwargs):
