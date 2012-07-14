@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from .restclient import RestClient
+from .exceptions import cloud_error
 from . import __version__
 
 
@@ -66,7 +67,14 @@ class StackatoClient(RestClient):
             headers.update(kwargs['headers'])
         kwargs['headers'] = headers
 
-        return super(StackatoClient, self).request(method, path, **kwargs)
+        return_response = True
+        if kwargs.has_key('return_response'):
+            return_response = kwargs['return_response']
+        
+        retval = super(StackatoClient, self).request(method, path, **kwargs)
+        if return_response:
+            cloud_error(retval)
+        return retval
 
     def create_auth_token(self, email, password=None, **kwargs):
         if not password:

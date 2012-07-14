@@ -63,7 +63,7 @@ class RestClient(object):
         if return_response:
             request.send(prefetch=True)
             response = request.response
-            response.raise_for_status()
+            # response.raise_for_status()
             return response
         else:
             return request
