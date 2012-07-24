@@ -1,0 +1,6 @@
+#!/bin/bash
+
+pip install -e .
+pip install nosexcover coverage pylint django_nose nose-exclude
+python manage.py test --with-xunit --xunit-file=nosetests.xml --with-xcoverage --xcoverage-file=coverage.xml
+pylint -f parseable stackato | tee pylint.out
