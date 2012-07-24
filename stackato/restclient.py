@@ -18,13 +18,16 @@ class RestClient(object):
     disabled, by default.
     """
 
+    requests = requests
+
     def __init__(self, baseurl=None, **kwargs):
         headers = {'Cache-Control': 'no-cache', 'Pragma': 'no-cache'}
         headers.update(kwargs.pop('headers', {}))
         verify_ssl = kwargs.pop('verify', False)
 
         self.config = kwargs.copy()
-        self.requester = requests.session(verify=verify_ssl, headers=headers, **kwargs)
+        self.requester = self.requests.session(
+            verify=verify_ssl, headers=headers, **kwargs)
         self.target = baseurl
 
     @property
