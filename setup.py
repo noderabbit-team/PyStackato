@@ -3,7 +3,7 @@ import stackato
 
 requirements = ['setuptools', 'requests>=0.11.2']
 
-version = '0.10.2'
+version = '0.10.2.1dev'
 
 setup(
     name='PyStackato',
@@ -14,6 +14,7 @@ setup(
     packages=['stackato'],
     install_requires=requirements
 )
+
 
 
 
