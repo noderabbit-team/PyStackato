@@ -3,7 +3,7 @@
 from requests.exceptions import *
 
 
-class CloudError(RequestException):
+class CloudError(HTTPError):
     def __init__(self, description, code, response):
         super(CloudError, self).__init__(description)
         self.code = code
